@@ -21,8 +21,10 @@ namespace han5c
 			.ConfigureWebHostDefaults(webBuilder =>
 					{
 					webBuilder
-					.UseStartup<Startup>()
-					.UseUrls($"http://localhost:28052");
+					.UseKestrel(option=>
+							option.Listen(System.Net.IPAddress.Any,443,(lop)=>
+								lop.UseHttps("han5.cc.pfx","123456")))
+					.UseStartup<Startup>();
 					});
 	}
 }
