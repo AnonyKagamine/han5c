@@ -1,0 +1,51 @@
+﻿@page
+@model IndexModel
+@{
+ViewData["Title"] = "Index";
+}
+<form method="post" class="form-horizontal">
+	<div class="container">
+		<div class="row form-group">
+			<label class="control-label col-lg-1" for="name">密钥</label>
+			<div class="col-lg-5 col-md-6">
+				<input class="form-control" name="inputKey" type="text" value="@Model.MyKey"></input>
+			</div>
+		</div>
+		<div class="row form-group">
+			<label class="control-label col-lg-1">密文</label>
+			<div class="col-lg-5 col-md-6">
+				<textarea class="form-control" name="inputCode" rows="5">@Model.MyContent</textarea>
+			</div>
+		</div>
+		<div class="row form-group" style="text-align:center">
+			<div class="col-lg-5 col-md-6">
+				<input value="解码" type="submit" asp-page-handler="decode" class="btn btn-primary" onclick="doDecode();"/>
+				<input value="编码" type="submit" asp-page-handler="encode" class="btn btn-primary"/>
+				<input value="公开密钥" type="button" onclick="doWriteKey();" class="btn btn-primary"/>
+			</div>
+		</div>
+		<div class="row form-group" style="text-align:center">
+			<div class="col-lg-5 col-md-6">
+				<span class="help-block" id="valierr" style="color:#FF9966">@Model.MyMessage</span>
+			</div>
+		</div>
+	</div>
+</form>
+<script language="javascript">
+	function doDecode(){
+		var text=$("[name='inputCode']").val();
+		var n=text.lastIndexOf(" ");
+		if(n==-1)return true;
+		$("[name='inputKey']").val(text.substr(0,n));
+		$("[name='inputCode']").val(text.substr(n+1));
+		alert(text);
+		return true
+	}
+
+function doWriteKey(){
+	var text=$("[name='inputCode']").val();
+	if(text.indexOf(" ")!=-1)return true;
+	$("[name='inputCode']").val($("[name='inputKey']").val()+" "+text);
+	return true
+}
+</script>
