@@ -1,4 +1,6 @@
 *.pfx
+*.swp
+*.zip
 /bin/*
 /obj/*
 /pub/*
