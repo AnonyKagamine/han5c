@@ -21,6 +21,7 @@ namespace han5c
 			.ConfigureWebHostDefaults(webBuilder =>
 					{
 					webBuilder
+					.UseKestrel(option=>option.Limits.MaxRequestHeadersTotalSize=1048576)
 					.UseUrls($"http://localhost:28052")
 					.UseStartup<Startup>();
 					});
