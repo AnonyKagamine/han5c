@@ -5,6 +5,7 @@ ViewData["Title"] = "Index";
 }
 <form method="post" class="form-horizontal">
 	<div class="container">
+		<br/>
 		<div class="row form-group">
 			<label class="control-label col-lg-1" for="name">密钥</label>
 			<div class="col-lg-5 col-md-6">
@@ -14,7 +15,7 @@ ViewData["Title"] = "Index";
 		<div class="row form-group">
 			<label class="control-label col-lg-1">密文</label>
 			<div class="col-lg-5 col-md-6">
-				<textarea class="form-control" name="inputCode" rows="5">@Model.MyContent</textarea>
+				<textarea class="form-control" name="inputCode" rows="10">@Model.MyContent</textarea>
 			</div>
 		</div>
 		<div class="row form-group" style="text-align:center">
@@ -34,7 +35,7 @@ ViewData["Title"] = "Index";
 <script language="javascript">
 	function doDecode(){
 		var text=$("[name='inputCode']").val();
-		var n=text.lastIndexOf(" ");
+		var n=text.lastIndexOf("。");
 		if(n==-1)return true;
 		$("[name='inputKey']").val(text.substr(0,n));
 		$("[name='inputCode']").val(text.substr(n+1));
@@ -43,7 +44,7 @@ ViewData["Title"] = "Index";
 
 function doWriteKey(){
 	var text=$("[name='inputCode']").val();
-	if(text.indexOf(" ")!=-1)return true;
+	if(text.indexOf("。")!=-1)return true;
 	$("[name='inputCode']").val($("[name='inputKey']").val()+" "+text);
 	return true
 }

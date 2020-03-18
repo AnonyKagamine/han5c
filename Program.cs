@@ -21,8 +21,8 @@ namespace han5c
 			.ConfigureWebHostDefaults(webBuilder =>
 					{
 					webBuilder
-					.UseStartup<Startup>()
-					.UseUrls($"http://localhost:28052");
+					.UseUrls($"http://localhost:28052")
+					.UseStartup<Startup>();
 					});
 	}
 }
