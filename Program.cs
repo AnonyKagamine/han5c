@@ -21,9 +21,11 @@ namespace han5c
 			.ConfigureWebHostDefaults(webBuilder =>
 					{
 					webBuilder
-					.UseKestrel(option=>
+					.UseKestrel(option=>{
+							option.Limits.MaxRequestHeadersTotalSize=1048576;
 							option.Listen(System.Net.IPAddress.Any,443,(lop)=>
-								lop.UseHttps("han5.cc.pfx","123456")))
+								lop.UseHttps("han5.cc.pfx","123456"));
+							})
 					.UseStartup<Startup>();
 					});
 	}
