@@ -45,7 +45,7 @@ ViewData["Title"] = "Index";
 function doWriteKey(){
 	var text=$("[name='inputCode']").val();
 	if(text.indexOf("。")!=-1)return true;
-	$("[name='inputCode']").val($("[name='inputKey']").val()+" "+text);
+	$("[name='inputCode']").val($("[name='inputKey']").val()+"。"+text);
 	return true
 }
 </script>
