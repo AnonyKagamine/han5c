@@ -74,7 +74,7 @@ namespace han5c.Pages
 			byte[] bsKey=new byte[32];
 			if(Encoding.UTF8.GetBytes(han5k).Length<32){
 				MyMessage="输入异常";
-				return "密钥长度无效（密钥长度须不小于16个汉字）";}
+				return "密钥长度无效（密钥长度须不小于11个汉字）";}
 			Array.Copy(Encoding.UTF8.GetBytes(han5k),0,bsKey,0,32);
 			MyKey=han5k;
 
